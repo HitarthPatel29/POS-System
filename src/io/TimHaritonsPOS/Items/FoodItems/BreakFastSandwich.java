@@ -1,25 +1,18 @@
 package io.TimHaritonsPOS.Items.FoodItems;
 
+import io.TimHaritonsPOS.NamePricePair;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+
 public class BreakFastSandwich extends FoodItem {
-
-    private double price = 3.50;
-
     public BreakFastSandwich(int id) {
-        super(id);
+        super(id, "Breakfast Sandwich", 4.0 , new LinkedList<>(
+            Arrays.asList(
+                new NamePricePair("Cheese", 1.00),
+                new NamePricePair("Chipotle", 0.75),
+                new NamePricePair("Bacon", 1.50)
+            )));
     }
 
-    public double getPrice() {
-        return price + (0.5*modifications.size()) ;
-    }
-
-    @Override
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    @Override
-    public String toString() {
-        return "BreakFastSandwich{" +
-                "price=" + getPrice() + printModification()+'}';
-    }
 }

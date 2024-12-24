@@ -16,11 +16,6 @@ public class DrinkItems implements Item {
     }
 
     @Override
-    public void setPrice(double price) {
-
-    }
-
-    @Override
     public int getId() {
         return id;
     }

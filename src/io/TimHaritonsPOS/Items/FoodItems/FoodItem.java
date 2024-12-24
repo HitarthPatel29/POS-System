@@ -1,23 +1,39 @@
 package io.TimHaritonsPOS.Items.FoodItems;
 
 import io.TimHaritonsPOS.Items.Item;
+import io.TimHaritonsPOS.NamePricePair;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public abstract class FoodItem implements Item {
-    protected final int id;
-    protected LinkedList<String> ingredients = new LinkedList<>();
-    protected LinkedList<String> modifications = new LinkedList<>();
-    protected LinkedList<String> modifiers = new LinkedList<>(Arrays.asList("cheese", "lettuce", "tomato", "onions", "chipotle", "ketchup", "Bacon", "Sausage"));
+    private final int id;
+    private final String ItemName;
+    private final double price;
+    private final LinkedList<NamePricePair> ingredients;
+    private LinkedList<NamePricePair> modifications = new LinkedList<>();
+    private final ArrayList<NamePricePair> modifiers = new ArrayList<>(Arrays.asList(
+            new NamePricePair("Cheese", 1.00),
+            new NamePricePair("lettuce", 0.50),
+            new NamePricePair("Tomato", 0.50),
+            new NamePricePair("Onions", 0.50),
+            new NamePricePair("Chipotle", 0.75),
+            new NamePricePair("Ketchup", 0),
+            new NamePricePair("Bacon", 1.50),
+            new NamePricePair("Sausage", 1.50)
+    ));
 
-    public FoodItem(int id) {
+    public FoodItem(int id, String itemName, double price, LinkedList<NamePricePair> ingredients ) {
         this.id = id;
+        this.ItemName = itemName;
+        this.price = price;
+        this.ingredients = ingredients;
         listOfModifiers();
         setModifications();
     }
-    protected void setModifications(){
+    private void setModifications(){
         Scanner sc = new Scanner(System.in);
         int modifierNum = 0;
         while (true) {
@@ -27,30 +43,44 @@ public abstract class FoodItem implements Item {
             modifications.add(modifiers.get(modifierNum-1));
         }
     }
-
+    public double getPrice() {
+        double totalPrice = price;
+        for (NamePricePair modifier: modifications) {
+            totalPrice+= modifier.getPrice();
+        }
+        return totalPrice;
+    }
     @Override
     public int getId() {
         return id;
     }
 
-    protected void listOfModifiers(){
-        System.out.printf("%-" + 30 + "s %s\n", "1. cheese", "2. lettuce");
-        System.out.printf("%-" + 30 + "s %s\n", "3. Tomato", "4. Onions");
-        System.out.printf("%-" + 30 + "s %s\n", "5. Chipotle", "6. Ketchup");
-        System.out.printf("%-" + 30 + "s %s\n", "7. Bacon", "8. Sausage");
+    private void listOfModifiers(){
+        System.out.println("Pick Modifications for " + ItemName + " or else ENTER 9");
+        for (int i = 0; i< modifiers.size(); i+=2){
+            System.out.printf("%-" + 30 + "s %s\n", (i+1) +". "+  modifiers.get(i).toString(), (i+2) +". "+ modifiers.get(i+1).toString());
+        }
         System.out.println("9. No more Addition!!!");
     }
 
-    protected String printModification(){
+    private String printModification(){
         if (modifications.size() == 0) return "";
         else {
-            String returnString = "{";
-            for (String modifier: modifications) {
-                returnString+= modifier + ", ";
+            StringBuilder returnString = new StringBuilder("{");
+            for (NamePricePair modifier: modifications) {
+                returnString.append(modifier).append(", ");
             }
-            returnString+= "}";
-            return  returnString;
+            returnString.append("}");
+            return returnString.toString();
         }
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "BreakFastSandwich{" +
+                "price=" + getPrice() + printModification()+'}';
     }
 
 }
