@@ -5,10 +5,17 @@ import java.util.Objects;
 public class NamePricePair {
     private final String name;
     private final double price;
+    private int amount;
 
+    public NamePricePair(String name, double price, int amount) {
+        this.name = name;
+        this.price = price;
+        this.amount = amount;
+    }
     public NamePricePair(String name, double price) {
         this.name = name;
         this.price = price;
+        this.amount = 1;
     }
 
     public String getName() {
@@ -16,7 +23,11 @@ public class NamePricePair {
     }
 
     public double getPrice() {
-        return price;
+        return (price*amount);
+    }
+
+    public void setAmount(int amount){
+        this.amount = amount;
     }
 
     @Override
@@ -34,6 +45,6 @@ public class NamePricePair {
 
     @Override
     public String toString() {
-        return name + "' -> $" + price;
+        return amount+" "+name + "' -> $" + price;
     }
 }
