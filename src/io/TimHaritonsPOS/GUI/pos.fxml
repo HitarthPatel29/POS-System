@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.effect.ColorInput?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.TimHaritonsPOS.GUI.PosController">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="832.0" prefWidth="1107.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <SplitPane dividerPositions="0.25" prefHeight="822.0" prefWidth="1097.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <items>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <SplitPane dividerPositions="0.7" layoutX="42.0" layoutY="133.0" orientation="VERTICAL" prefHeight="820.0" prefWidth="271.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <items>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <ListView fx:id="ItemList" editable="true" fixedCellSize="30.0" prefHeight="570.0" prefWidth="269.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <VBox layoutX="-2.0" layoutY="21.0" prefHeight="242.0" prefWidth="271.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Button fx:id="payNowButton" mnemonicParsing="false" prefHeight="85.0" prefWidth="275.0" style="-fx-font-size: 20; -fx-background-color: green; -fx-border-color: black;" text="Pay Now">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="removeItemButton" mnemonicParsing="false" prefHeight="52.0" prefWidth="275.0" style="-fx-font-size: 16; -fx-border-color: black;" text="Remove Item">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="removeAllItemButton" layoutX="10.0" layoutY="91.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="275.0" style="-fx-font-size: 16; -fx-border-color: black;" text="Remove All Item">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="reviewOrdersButton" layoutX="10.0" layoutY="143.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="275.0" style="-fx-font-size: 16; -fx-border-color: black;" text="Review Orders">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </items>
+                        </SplitPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <SplitPane dividerPositions="0.7" orientation="VERTICAL" prefHeight="820.0" prefWidth="818.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <items>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <TabPane layoutX="235.0" layoutY="101.0" prefHeight="570.0" prefWidth="816.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <tabs>
+                                          <Tab text="Bakery">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <HBox prefHeight="512.0" prefWidth="816.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <children>
+                                                            <StackPane fx:id="bakeryStackPane" prefHeight="512.0" prefWidth="716.0">
+                                                               <children>
+                                                                  <AnchorPane fx:id="muffinPane" prefHeight="200.0" prefWidth="200.0" />
+                                                                  <AnchorPane fx:id="donutPane" prefHeight="200.0" prefWidth="200.0" />
+                                                                  <AnchorPane fx:id="pasteryPane" prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </StackPane>
+                                                            <VBox prefHeight="180.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <Button id="muffinPage" fx:id="muffinPaneButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Muffins">
+                                                                     <cursor>
+                                                                        <Cursor fx:constant="HAND" />
+                                                                     </cursor>
+                                                                  </Button>
+                                                                  <Button id="donutPage" fx:id="donutPaneButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Donuts">
+                                                                     <cursor>
+                                                                        <Cursor fx:constant="HAND" />
+                                                                     </cursor>
+                                                                  </Button>
+                                                                  <Button id="pasteryPage" fx:id="pasteryPaneButton" layoutX="10.0" layoutY="42.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Pastery" VBox.vgrow="ALWAYS">
+                                                                     <cursor>
+                                                                        <Cursor fx:constant="HAND" />
+                                                                     </cursor>
+                                                                  </Button>
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
+                                          <Tab text="Drinks">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <HBox prefHeight="512.0" prefWidth="816.0">
+                                                         <children>
+                                                            <StackPane fx:id="drinksStackPane" prefHeight="512.0" prefWidth="716.0">
+                                                               <children>
+                                                                  <AnchorPane fx:id="hotDrinksPane" prefHeight="200.0" prefWidth="200.0" />
+                                                                  <AnchorPane fx:id="coldDrinksPane" prefHeight="200.0" prefWidth="200.0" />
+                                                                  <AnchorPane fx:id="otherDrinksPane" prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </StackPane>
+                                                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <Button id="hotDrinkPage" fx:id="hotDrinkPaneButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Hot Drinks">
+                                                                     <cursor>
+                                                                        <Cursor fx:constant="HAND" />
+                                                                     </cursor>
+                                                                     <effect>
+                                                                        <ColorInput />
+                                                                     </effect>
+                                                                  </Button>
+                                                                  <Button id="coldDrinkPage" fx:id="coldDrinkPaneButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Cold Drinks">
+                                                                     <cursor>
+                                                                        <Cursor fx:constant="HAND" />
+                                                                     </cursor>
+                                                                  </Button>
+                                                                  <Button id="otherDrinkPage" fx:id="otherDrinksPaneButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Other Drinks">
+                                                                     <cursor>
+                                                                        <Cursor fx:constant="HAND" />
+                                                                     </cursor>
+                                                                     <effect>
+                                                                        <ColorInput />
+                                                                     </effect>
+                                                                  </Button>
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
+                                          <Tab text="food">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <HBox prefHeight="512.0" prefWidth="816.0">
+                                                         <children>
+                                                            <StackPane fx:id="foodStackPane" prefHeight="512.0" prefWidth="716.0">
+                                                               <children>
+                                                                  <AnchorPane fx:id="breakFastPane" prefHeight="200.0" prefWidth="200.0" />
+                                                                  <AnchorPane fx:id="lunchPane" prefHeight="200.0" prefWidth="200.0" />
+                                                               </children>
+                                                            </StackPane>
+                                                            <VBox prefHeight="120.0" prefWidth="100.0">
+                                                               <children>
+                                                                  <Button id="breakfastPage" fx:id="breakFastPaneButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="BreakFast" />
+                                                                  <Button id="lunchPage" fx:id="lunchPaneButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Lunch" />
+                                                               </children>
+                                                            </VBox>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
+                                       </tabs>
+                                    </TabPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <HBox prefHeight="242.0" prefWidth="816.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <VBox alignment="CENTER" prefHeight="242.0" prefWidth="150.0">
+                                             <children>
+                                                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: grey; -fx-font-size: 16;" text="Small">
+                                                   <VBox.margin>
+                                                      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button layoutX="188.0" layoutY="101.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: grey; -fx-font-size: 16;" text="Medium">
+                                                   <VBox.margin>
+                                                      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button layoutX="188.0" layoutY="131.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: grey; -fx-font-size: 16;" text="Large">
+                                                   <VBox.margin>
+                                                      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <GridPane hgap="1.0" prefHeight="242.0" prefWidth="320.0" vgap="2.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: black; -fx-font-size: 16;" text="Regular" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                <Button layoutX="10.0" layoutY="21.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: black; -fx-font-size: 16;" text="Regular Milk" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                <Button layoutX="10.0" layoutY="21.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: black; -fx-font-size: 16;" text="Double Double w Milk" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                <Button layoutX="160.0" layoutY="21.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: black; -fx-font-size: 16;" text="Double Double" textFill="#fffefe" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                <Button layoutX="10.0" layoutY="102.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: black; -fx-font-size: 16;" text="Triple Triple w Milk" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                <Button layoutX="10.0" layoutY="102.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: black; -fx-font-size: 16;" text="Triple Triple" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                             </HBox.margin>
+                                          </GridPane>
+                                          <VBox alignment="CENTER_RIGHT" prefHeight="242.0" prefWidth="150.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: pink; -fx-font-size: 16;" text="Cream" VBox.vgrow="ALWAYS">
+                                                   <VBox.margin>
+                                                      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button layoutX="188.0" layoutY="101.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: pink; -fx-font-size: 16;" text="Milk">
+                                                   <VBox.margin>
+                                                      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button layoutX="188.0" layoutY="131.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: pink; -fx-font-size: 16;" text="Sugar">
+                                                   <VBox.margin>
+                                                      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                                <Button layoutX="10.0" layoutY="41.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: pink; -fx-font-size: 16;" text="Sweetner">
+                                                   <VBox.margin>
+                                                      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                                   </VBox.margin>
+                                                </Button>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <GridPane alignment="CENTER" hgap="5.0" prefHeight="242.0" prefWidth="249.0" vgap="5.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints />
+                                                <ColumnConstraints />
+                                                <ColumnConstraints />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints />
+                                                <RowConstraints />
+                                                <RowConstraints />
+                                             </rowConstraints>
+                                             <HBox.margin>
+                                                <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                             </HBox.margin>
+                                             <children>
+                                                <Button prefHeight="75" prefWidth="75" text="1" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                                <Button prefHeight="75" prefWidth="75" text="2" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                                <Button prefHeight="75" prefWidth="75" text="3" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                                                <Button prefHeight="75" prefWidth="75" text="4" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                                <Button prefHeight="75" prefWidth="75" text="5" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Button prefHeight="75" prefWidth="75" text="6" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                <Button prefHeight="75" prefWidth="75" text="7" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                                <Button prefHeight="75" prefWidth="75" text="8" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Button prefHeight="75" prefWidth="75" text="9" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                             </children>
+                                          </GridPane>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
+                           </items>
+                        </SplitPane>
+                     </children>
+                  </AnchorPane>
+               </items>
+            </SplitPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
