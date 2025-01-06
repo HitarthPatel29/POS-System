@@ -24,6 +24,9 @@ public class BakeryItem implements Item {
     public String getItemName() {
         return itemName;
     }
+    public String getDisplayString(){
+        return String.format("%-23s $%4.2f",itemName, getPrice());
+    }
 
     @Override
     public String toString() {

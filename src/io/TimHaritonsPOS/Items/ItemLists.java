@@ -1,6 +1,9 @@
 package io.TimHaritonsPOS.Items;
 
 import io.TimHaritonsPOS.Items.BakeryItems.*;
+import io.TimHaritonsPOS.Items.DrinkItems.*;
+import io.TimHaritonsPOS.Items.FoodItems.BreakFastSandwich;
+import io.TimHaritonsPOS.Items.FoodItems.LoadedWrap;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,7 +29,28 @@ public class ItemLists {
             )
     );
 
-//    private ArrayList<Item> BreakFast;
+    private final ArrayList<Class<?>> hotDrinkList = new ArrayList<>(
+            Arrays.asList(
+                    OriginalBlendCoffee.class,
+                    DecafCoffee.class,
+                    DarkRoastCoffee.class,
+                    latte.class
+            )
+    );
+
+    private final ArrayList<Class<?>> breakFastFoodList= new ArrayList<>(
+            Arrays.asList(
+                    BreakFastSandwich.class
+            )
+    );
+
+    private final ArrayList<Class<?>> lunchFoodList = new ArrayList<>(
+            Arrays.asList(
+                    LoadedWrap.class
+            )
+    );
+
+
 
     public ArrayList<Class<?>> getMuffinList() {
         return muffinList;
@@ -38,5 +62,17 @@ public class ItemLists {
 
     public ArrayList<Class<?>> getPasteryList() {
         return pasteryList;
+    }
+
+    public ArrayList<Class<?>> getHotDrinkList() {
+        return hotDrinkList;
+    }
+
+    public ArrayList<Class<?>> getBreakFastFoodList() {
+        return breakFastFoodList;
+    }
+
+    public ArrayList<Class<?>> getLunchFoodList() {
+        return lunchFoodList;
     }
 }

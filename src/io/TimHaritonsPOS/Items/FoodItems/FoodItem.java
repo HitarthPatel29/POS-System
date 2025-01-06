@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public abstract class FoodItem implements Item {
     private final int id;
-    private final String ItemName;
+    private final String itemName;
     private final double price;
     private LinkedList<NamePricePair> ingredients;
     private LinkedList<NamePricePair> modifications = new LinkedList<>();
@@ -28,11 +28,9 @@ public abstract class FoodItem implements Item {
 
     public FoodItem(int id, String itemName, double price, LinkedList<NamePricePair> ingredients ) {
         this.id = id;
-        this.ItemName = itemName;
+        this.itemName = itemName;
         this.price = price;
         this.ingredients = ingredients;
-        listOfModifiers();
-        setModifications();
     }
     public double getPrice() {
         double totalPrice = price;
@@ -51,12 +49,15 @@ public abstract class FoodItem implements Item {
 
     @Override
     public String getItemName() {
-        return null;
+        return itemName;
     }
 
+    public String getDisplayString(){
+        return String.format("%-23s $%4.2f",itemName, getPrice());
+    }
 
     private void listOfModifiers(){
-        System.out.println("Pick Modifications for " + ItemName + " or else ENTER 9");
+        System.out.println("Pick Modifications for " + itemName + " or else ENTER 9");
         int i = 1;
         for (NamePricePair modifier: modifiers){
             System.out.println(i + ". " + modifier.toString());

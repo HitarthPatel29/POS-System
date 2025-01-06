@@ -5,19 +5,19 @@ import io.TimHaritonsPOS.NamePricePair;
 public class Coffee extends DrinkItems{
 
     public Coffee(int id, char size, String type) {
-        super(id, size, type+"Coffee");
+        super(id, size, type+" Coffee");
     }
 
     public double getPrice() {
         double totalPrice = 0;
         switch (size){
-            case 's' :
+            case 'S' :
                 totalPrice = 1.55;
                 break;
-            case 'm' :
+            case 'M' :
                 totalPrice = 1.90;
                 break;
-            case 'l' :
+            case 'L' :
                 totalPrice = 2.05;
                 break;
             default:

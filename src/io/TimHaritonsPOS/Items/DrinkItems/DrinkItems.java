@@ -33,16 +33,16 @@ public abstract class DrinkItems implements Item {
         this.id = id;
         this.size = size;
         this.itemName = itemName;
-        listOfModifiers();
-        setModifications();
+//        listOfModifiers();
+//        setModifications();
     }
     public DrinkItems(int id, char size, String itemName , ArrayList<NamePricePair> modifications) {
         this.id = id;
         this.size = size;
         this.itemName = itemName;
         this.modifications.addAll(modifications);
-        listOfModifiers();
-        setModifications();
+//        listOfModifiers();
+//        setModifications();
     }
 
     public abstract double getPrice();
@@ -50,6 +50,16 @@ public abstract class DrinkItems implements Item {
     public int getId() {
         return id;
     }
+
+    @Override
+    public String getItemName() {
+        return itemName;
+    }
+
+    public String getDisplayString(){
+        return String.format("%-2s %-21s $%4.2f", size, itemName, getPrice());
+    }
+
     public LinkedList<NamePricePair> getingredients(){
         return ingredients;
     }
@@ -71,13 +81,6 @@ public abstract class DrinkItems implements Item {
         while (true) {
             System.out.println("Enter the number to add Modifiers : ");
             modifierNum = sc.nextInt();
-//            if (modifierNum == modifiers.size()+1) {
-//                printIngredients();
-//                System.out.println("Enter num to remove : ");
-//                removeIngredients(sc.nextInt());
-//                printIngredients();
-//                continue;
-//          }
             if (modifierNum == modifiers.size()+1) {
                 break;
             }

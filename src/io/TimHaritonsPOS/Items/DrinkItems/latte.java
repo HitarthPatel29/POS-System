@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class latte extends DrinkItems{
-    public latte(int id, char size, String type) {
+    public latte(int id, char size) {
         super(id, size, "latte", new ArrayList<>(Arrays.asList(new NamePricePair("Milk", 0.00))));
     }
 

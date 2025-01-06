@@ -22,9 +22,9 @@ public class DashBoard {
         order.add(new BreakFastSandwich(id++));
         System.out.println(order.toString());
 
-        order.add(new Coffee(id++, 's', "original Blend"));
+        order.add(new Coffee(id++, 'S', "original Blend"));
         System.out.println(order.toString());
-        order.add(new latte(id++, 'l', "milk"));
+        order.add(new latte(id++, 'L'));
         System.out.println(order.toString());
     }
 }
