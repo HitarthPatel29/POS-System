@@ -14,6 +14,7 @@ public abstract class FoodItem implements Item {
     private final double price;
     private final LinkedList<NamePricePair> ingredients;
     private LinkedList<NamePricePair> modifications = new LinkedList<>();
+
     private final ArrayList<NamePricePair> modifiers = new ArrayList<>(Arrays.asList(
             new NamePricePair("Cheese", 1.00),
             new NamePricePair("lettuce", 0.50),
@@ -54,6 +55,12 @@ public abstract class FoodItem implements Item {
     public int getId() {
         return id;
     }
+
+    @Override
+    public String getItemName() {
+        return null;
+    }
+
 
     private void listOfModifiers(){
         System.out.println("Pick Modifications for " + ItemName + " or else ENTER 9");

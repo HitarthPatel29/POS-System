@@ -21,6 +21,10 @@ public class BakeryItem implements Item {
         return price;
     }
 
+    public String getItemName() {
+        return itemName;
+    }
+
     @Override
     public String toString() {
         return itemName + "{" +
