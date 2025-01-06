@@ -3,6 +3,8 @@ package io.TimHaritonsPOS;
 import io.TimHaritonsPOS.Items.BakeryItems.AppleFritter;
 import io.TimHaritonsPOS.Items.BakeryItems.BostonCream;
 import io.TimHaritonsPOS.Items.BakeryItems.ChocoMuffin;
+import io.TimHaritonsPOS.Items.DrinkItems.Coffee;
+import io.TimHaritonsPOS.Items.DrinkItems.latte;
 import io.TimHaritonsPOS.Items.FoodItems.BreakFastSandwich;
 import io.TimHaritonsPOS.Items.Item;
 
@@ -18,6 +20,11 @@ public class DashBoard {
         System.out.println(order.toString());
 
         order.add(new BreakFastSandwich(id++));
+        System.out.println(order.toString());
+
+        order.add(new Coffee(id++, 's', "original Blend"));
+        System.out.println(order.toString());
+        order.add(new latte(id++, 'l', "milk"));
         System.out.println(order.toString());
     }
 }

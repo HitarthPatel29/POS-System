@@ -12,7 +12,7 @@ public abstract class FoodItem implements Item {
     private final int id;
     private final String ItemName;
     private final double price;
-    private final LinkedList<NamePricePair> ingredients;
+    private LinkedList<NamePricePair> ingredients;
     private LinkedList<NamePricePair> modifications = new LinkedList<>();
 
     private final ArrayList<NamePricePair> modifiers = new ArrayList<>(Arrays.asList(
@@ -34,16 +34,6 @@ public abstract class FoodItem implements Item {
         listOfModifiers();
         setModifications();
     }
-    private void setModifications(){
-        Scanner sc = new Scanner(System.in);
-        int modifierNum = 0;
-        while (true) {
-            System.out.println("Enter the number to add Modifiers : ");
-            modifierNum = sc.nextInt();
-            if (modifierNum == 9) break;
-            modifications.add(modifiers.get(modifierNum-1));
-        }
-    }
     public double getPrice() {
         double totalPrice = price;
         for (NamePricePair modifier: modifications) {
@@ -55,6 +45,9 @@ public abstract class FoodItem implements Item {
     public int getId() {
         return id;
     }
+    public LinkedList<NamePricePair> getIngredients(){
+        return ingredients;
+    }
 
     @Override
     public String getItemName() {
@@ -64,10 +57,31 @@ public abstract class FoodItem implements Item {
 
     private void listOfModifiers(){
         System.out.println("Pick Modifications for " + ItemName + " or else ENTER 9");
-        for (int i = 0; i< modifiers.size(); i+=2){
-            System.out.printf("%-" + 30 + "s %s\n", (i+1) +". "+  modifiers.get(i).toString(), (i+2) +". "+ modifiers.get(i+1).toString());
+        int i = 1;
+        for (NamePricePair modifier: modifiers){
+            System.out.println(i + ". " + modifier.toString());
+            i++;
         }
-        System.out.println("9. No more Addition!!!");
+        System.out.println((i++) + ". To Remove Item!!!");
+        System.out.println(i+". No more Addition!!!");
+    }
+
+    private void setModifications(){
+        Scanner sc = new Scanner(System.in);
+        int modifierNum = 0;
+        while (true) {
+            System.out.println("Enter the number to add Modifiers : ");
+            modifierNum = sc.nextInt();
+            if (modifierNum == modifiers.size()+1) {
+                printIngredients();
+                System.out.println("Enter num to remove : ");
+                removeIngredients(sc.nextInt());
+                printIngredients();
+                continue;
+            }
+            else if (modifierNum == modifiers.size()+2) break;
+            modifications.add(modifiers.get(modifierNum-1));
+        }
     }
 
     private String printModification(){
@@ -82,6 +96,15 @@ public abstract class FoodItem implements Item {
         }
     }
 
+    private void printIngredients(){
+        for (int i = 0; i< ingredients.size(); i++){
+            System.out.println( (i+1) +". "+  ingredients.get(i).toString() );
+        }
+    }
+
+    public void removeIngredients(int id){
+        ingredients.remove(id-1);
+    }
 
 
     @Override
