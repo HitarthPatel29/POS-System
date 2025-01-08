@@ -50,7 +50,10 @@
                                                 </Text>
                                                 <Text fx:id="subTotalText" layoutX="231.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" />
                                                 <Text fx:id="taxText" layoutX="231.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" />
-                                                <Text fx:id="totalText" layoutX="231.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" />
+                                                <Text fx:id="totalText" layoutX="220.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font></Text>
                                              </children>
                                           </AnchorPane>
                                        </children>
@@ -97,7 +100,7 @@
                                  <children>
                                     <TabPane fx:id="tabPane" layoutX="235.0" layoutY="101.0" prefHeight="570.0" prefWidth="816.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <tabs>
-                                          <Tab fx:id="bakeryTabPane" text="Bakery">
+                                          <Tab fx:id="bakeryTabPane" onSelectionChanged="#showMuffinPane" text="Bakery">
                                              <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                    <children>
@@ -129,7 +132,7 @@
                                                 </AnchorPane>
                                              </content>
                                           </Tab>
-                                          <Tab fx:id="drinksTabPane" text="Drinks">
+                                          <Tab fx:id="drinksTabPane" onSelectionChanged="#showHotDrinksPane" text="Drinks">
                                              <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                    <children>
@@ -161,7 +164,7 @@
                                                 </AnchorPane>
                                              </content>
                                           </Tab>
-                                          <Tab fx:id="foodTabPane" text="food">
+                                          <Tab fx:id="foodTabPane" onSelectionChanged="#showBreakFastFoodPane" text="food">
                                              <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                    <children>
@@ -170,8 +173,8 @@
                                                             <AnchorPane fx:id="foodPane" prefHeight="512.0" prefWidth="715.0" />
                                                             <VBox prefHeight="120.0" prefWidth="100.0">
                                                                <children>
-                                                                  <Button id="breakfastPage" fx:id="breakFastPaneButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="BreakFast" />
-                                                                  <Button id="lunchPage" fx:id="lunchPaneButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Lunch" />
+                                                                  <Button id="breakfastPage" fx:id="breakFastPaneButton" mnemonicParsing="false" onAction="#showBreakFastFoodPane" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="BreakFast" />
+                                                                  <Button id="lunchPage" fx:id="lunchPaneButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#showLunchFoodPane" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Lunch" />
                                                                </children>
                                                             </VBox>
                                                          </children>
@@ -190,17 +193,17 @@
                                        <children>
                                           <VBox alignment="CENTER" prefHeight="242.0" prefWidth="150.0">
                                              <children>
-                                                <Button alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: grey; -fx-font-size: 16;" text="Small">
+                                                <Button fx:id="smallSizeButton" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: grey; -fx-font-size: 16;" text="Small">
                                                    <VBox.margin>
                                                       <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                                                    </VBox.margin>
                                                 </Button>
-                                                <Button layoutX="188.0" layoutY="101.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: grey; -fx-font-size: 16;" text="Medium">
+                                                <Button fx:id="mediumSizeButton" layoutX="188.0" layoutY="101.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: grey; -fx-font-size: 16;" text="Medium">
                                                    <VBox.margin>
                                                       <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                                                    </VBox.margin>
                                                 </Button>
-                                                <Button layoutX="188.0" layoutY="131.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: grey; -fx-font-size: 16;" text="Large">
+                                                <Button fx:id="largeSizeButton" layoutX="188.0" layoutY="131.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: grey; -fx-font-size: 16;" text="Large">
                                                    <VBox.margin>
                                                       <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                                                    </VBox.margin>

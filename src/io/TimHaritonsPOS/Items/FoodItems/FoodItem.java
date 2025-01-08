@@ -53,7 +53,7 @@ public abstract class FoodItem implements Item {
     }
 
     public String getDisplayString(){
-        return String.format("%-23s $%4.2f",itemName, getPrice());
+        return String.format("%-24s $%4.2f",itemName, getPrice());
     }
 
     private void listOfModifiers(){

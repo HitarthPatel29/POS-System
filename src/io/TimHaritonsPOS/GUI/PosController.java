@@ -20,6 +20,7 @@ public class PosController {
     @FXML
     private Text totalText;
     private double subTotal = 0;
+    private char size;
 
     @FXML
     private Text subTotalText;
@@ -32,18 +33,8 @@ public class PosController {
 
     @FXML
     private AnchorPane bakeryPane;
-
     @FXML
     private Tab bakeryTabPane;
-
-    @FXML
-    private Button breakFastPaneButton;
-
-    @FXML
-    private Button coldDrinkPaneButton;
-
-    @FXML
-    private Button donutPaneButton;
 
     @FXML
     private AnchorPane drinksPane;
@@ -56,6 +47,29 @@ public class PosController {
 
     @FXML
     private Tab foodTabPane;
+
+
+
+    @FXML
+    private Button breakFastPaneButton;
+
+    @FXML
+    private Button coldDrinkPaneButton;
+
+    @FXML
+    private Button donutPaneButton;
+
+
+    @FXML
+    private Button largeSizeButton;
+
+    @FXML
+    private Button mediumSizeButton;
+
+    @FXML
+    private Button smallSizeButton;
+
+
 
     @FXML
     private Button hotDrinkPaneButton;
@@ -106,16 +120,21 @@ public class PosController {
                 if (empty || item == null) {
                     setText(null);
                 } else {
-                    setText(item.getItemName());
+                    setText(item.getDisplayString());
+                    setStyle("-fx-font-family: 'Monospaced'; -fx-text-fill: black; -fx-font-weight: bold;");
                     setDisclosureNode(null);
                 }
             }
         });
+
+        smallSizeButton.setOnAction((event -> size = 'S'));
+        mediumSizeButton.setOnAction((event -> size = 'M'));
+        largeSizeButton.setOnAction((event -> size = 'L'));
+
     }
 
     @FXML
     private void showMuffinPane() {
-        System.out.println(itemLists.getMuffinList());
         createButtons(itemLists.getMuffinList(), bakeryPane);
     }
 
@@ -131,15 +150,30 @@ public class PosController {
 
     @FXML
     private void showHotDrinksPane() {
+        createButtons(itemLists.getHotDrinkList(), drinksPane);
     }
 
     @FXML
     private void showColdDrinksPane() {
+        createButtons(itemLists.getHotDrinkList(), drinksPane);
     }
 
     @FXML
     private void showOtherDrinksPane() {
+        createButtons(itemLists.getHotDrinkList(), drinksPane);
     }
+
+    @FXML
+    private void showBreakFastFoodPane() {
+        createButtons(itemLists.getBreakFastFoodList(), foodPane);
+    }
+
+    @FXML
+    private void showLunchFoodPane() {
+        createButtons(itemLists.getLunchFoodList(), foodPane);
+    }
+
+
 
     @FXML
     public void createButtons(List<Class<?>> itemClassList, AnchorPane itemPane) {
@@ -151,7 +185,14 @@ public class PosController {
 
         for (Class<?> itemClass :itemClassList) {
             try {
-                Item itemInstance = (Item) itemClass.getDeclaredConstructor().newInstance();
+
+                Item itemInstance;
+                if (itemPane.getId().equals("drinksPane")){
+                    itemInstance = (Item) itemClass.getDeclaredConstructor(int.class, char.class).newInstance(1, 'S');
+                }
+                else {
+                     itemInstance = (Item) itemClass.getDeclaredConstructor(int.class).newInstance(1);
+                }
 
                 if (xOffSet+150 > itemPane.getPrefWidth()) {
                     xOffSet = 10;
@@ -165,7 +206,7 @@ public class PosController {
                 itemButton.setPrefHeight(50.0); // Button height
 
                 // Add button handler to add muffin to the orderList
-                itemButton.setOnAction(e -> addItemToList(itemClass));
+                itemButton.setOnAction(e -> addItemToList(itemClass, itemPane));
 
                 // Add the button to the muffinPane
                 itemPane.getChildren().add(itemButton);
@@ -177,21 +218,33 @@ public class PosController {
         }
     }
     @FXML
-    private void addItemToList(Class<?> itemClass) {
+    private void addItemToList(Class<?> itemClass, AnchorPane itemPane) {
         try {
             // Create an instance of the class
-            Item item = (Item) itemClass.getDeclaredConstructor(int.class).newInstance(1);
+            Item item;
+            if (itemPane.getId().equals("drinksPane")){
+                if (size != 0 ) {
+                    item = (Item) itemClass.getDeclaredConstructor(int.class, char.class).newInstance(1, size);
+                }
+                else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Size is not Defined! Select the size and then the drink" , ButtonType.OK);
+                    alert.show();
+                    return;
+                }
+            }
+            else {
+                item = (Item) itemClass.getDeclaredConstructor(int.class).newInstance(1);
+            }
 
             // Add the object to the item list
             TreeItem<Item> newOrder = new TreeItem<>(item);
             newOrder.setExpanded(true);
             orderList.getChildren().add(newOrder);
 
-            System.out.println(orderList);
-            System.out.println(orderList.getChildren());
             subTotal += item.getPrice();
             printTotal(subTotal);
             System.out.println("Added item: " + item);
+
         } catch (Exception e) {
             System.err.println("Error handling button click for class: " + itemClass.getName());
             e.printStackTrace();
