@@ -518,8 +518,15 @@ public class PosController {
             printTotal(subTotal);
             System.out.println("Removed item: " + selectedItem);
         }
-        catch (NullPointerException e){
-            orderList.getChildren().remove(orderList.getChildren().size()-1);
+        catch (NullPointerException npe){
+            try {
+                subTotal-= orderList.getChildren().remove(orderList.getChildren().size() - 1).getValue().getPrice();
+                printTotal(subTotal);
+            }
+            catch (Exception ex){
+                Alert alert = new Alert(Alert.AlertType.ERROR, "No items to remove!", ButtonType.OK);
+                alert.show();
+            }
         }
     }
 
