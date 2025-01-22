@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -12,293 +13,359 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.TimHaritonsPOS.GUI.PosController">
+<AnchorPane minHeight="100.0" minWidth="50.0" prefHeight="807.0" prefWidth="1097.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.TimHaritonsPOS.GUI.PosController">
    <children>
-      <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="832.0" prefWidth="1107.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane prefHeight="822.0" prefWidth="1097.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <SplitPane dividerPositions="0.25" prefHeight="822.0" prefWidth="1097.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <items>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                     <children>
-                        <SplitPane dividerPositions="0.7" layoutX="42.0" layoutY="133.0" orientation="VERTICAL" prefHeight="820.0" prefWidth="271.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <items>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                                 <children>
-                                    <VBox prefHeight="577.0" prefWidth="271.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="orderTakerPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+               <children>
+                  <SplitPane dividerPositions="0.2547945205479452" prefHeight="822.0" prefWidth="1097.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <items>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <SplitPane dividerPositions="0.7" layoutX="42.0" layoutY="133.0" orientation="VERTICAL" prefHeight="820.0" prefWidth="271.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <items>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                        <children>
-                                          <TreeView fx:id="orderListView" prefHeight="496.0" prefWidth="271.0" />
-                                          <AnchorPane prefHeight="93.0" prefWidth="271.0">
+                                          <VBox prefHeight="577.0" prefWidth="271.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <children>
-                                                <Text layoutX="14.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total : ">
+                                                <TreeView fx:id="orderListView" prefHeight="496.0" prefWidth="271.0" />
+                                                <AnchorPane maxHeight="85.0" maxWidth="270.0" minHeight="85.0" minWidth="270.0" prefHeight="85.0" prefWidth="270.0" VBox.vgrow="NEVER">
+                                                   <children>
+                                                      <Text layoutX="14.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total : ">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Text layoutX="14.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tax :">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Text layoutX="14.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SubTotal : ">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <Text fx:id="subTotalText" layoutX="231.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" />
+                                                      <Text fx:id="taxText" layoutX="231.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" />
+                                                      <Text fx:id="totalText" layoutX="220.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                      </Text>
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                                   </padding>
+                                                </AnchorPane>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                       <children>
+                                          <VBox layoutX="-2.0" layoutY="21.0" prefHeight="242.0" prefWidth="271.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <Button fx:id="payNowButton" mnemonicParsing="false" onAction="#handlePayNow" prefHeight="85.0" prefWidth="275.0" style="-fx-font-size: 20; -fx-background-color: green; -fx-border-color: black;" text="Pay Now">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="removeItemButton" mnemonicParsing="false" onAction="#handleRemoveItem" prefHeight="52.0" prefWidth="275.0" style="-fx-font-size: 16; -fx-border-color: black;" text="Remove Item">
                                                    <font>
                                                       <Font size="18.0" />
                                                    </font>
-                                                </Text>
-                                                <Text layoutX="14.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tax :">
-                                                   <font>
-                                                      <Font size="14.0" />
-                                                   </font>
-                                                </Text>
-                                                <Text layoutX="14.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SubTotal : ">
-                                                   <font>
-                                                      <Font size="14.0" />
-                                                   </font>
-                                                </Text>
-                                                <Text fx:id="subTotalText" layoutX="231.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" />
-                                                <Text fx:id="taxText" layoutX="231.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" />
-                                                <Text fx:id="totalText" layoutX="220.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
+                                                </Button>
+                                                <Button fx:id="removeAllItemButton" layoutX="10.0" layoutY="91.0" mnemonicParsing="false" onAction="#handleRemoveAllItems" prefHeight="52.0" prefWidth="275.0" style="-fx-font-size: 16; -fx-border-color: black;" text="Remove All Item">
                                                    <font>
                                                       <Font size="18.0" />
-                                                   </font></Text>
+                                                   </font>
+                                                </Button>
+                                                <Button fx:id="reviewOrdersButton" layoutX="10.0" layoutY="143.0" mnemonicParsing="false" onAction="#handleReviewOrders" prefHeight="52.0" prefWidth="275.0" style="-fx-font-size: 16; -fx-border-color: black;" text="Review Orders">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </items>
+                              </SplitPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <SplitPane dividerPositions="0.7" orientation="VERTICAL" prefHeight="820.0" prefWidth="818.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <items>
+                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                       <children>
+                                          <AnchorPane fx:id="modifierPane" />
+                                          <AnchorPane fx:id="itemListPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                             <children>
+                                                <TabPane fx:id="tabPane" layoutX="235.0" layoutY="101.0" prefHeight="570.0" prefWidth="816.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <tabs>
+                                                      <Tab fx:id="bakeryTabPane" onSelectionChanged="#showMuffinPane" text="Bakery">
+                                                         <content>
+                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <HBox prefHeight="512.0" prefWidth="816.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                     <children>
+                                                                        <AnchorPane fx:id="bakeryPane" prefHeight="519.0" prefWidth="725.0" />
+                                                                        <VBox prefHeight="180.0" prefWidth="100.0">
+                                                                           <children>
+                                                                              <Button id="muffinPage" fx:id="muffinPaneButton" mnemonicParsing="false" onAction="#showMuffinPane" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Muffins">
+                                                                                 <cursor>
+                                                                                    <Cursor fx:constant="HAND" />
+                                                                                 </cursor>
+                                                                              </Button>
+                                                                              <Button id="donutPage" fx:id="donutPaneButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#showDonutPane" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Donuts">
+                                                                                 <cursor>
+                                                                                    <Cursor fx:constant="HAND" />
+                                                                                 </cursor>
+                                                                              </Button>
+                                                                              <Button id="pasteryPage" fx:id="pasteryPaneButton" layoutX="10.0" layoutY="42.0" mnemonicParsing="false" onAction="#showPasteryPane" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Pastery" VBox.vgrow="ALWAYS">
+                                                                                 <cursor>
+                                                                                    <Cursor fx:constant="HAND" />
+                                                                                 </cursor>
+                                                                              </Button>
+                                                                           </children>
+                                                                        </VBox>
+                                                                     </children>
+                                                                  </HBox>
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </content>
+                                                      </Tab>
+                                                      <Tab fx:id="drinksTabPane" onSelectionChanged="#showHotDrinksPane" text="Drinks">
+                                                         <content>
+                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <HBox prefHeight="512.0" prefWidth="816.0">
+                                                                     <children>
+                                                                        <AnchorPane fx:id="drinksPane" prefHeight="512.0" prefWidth="725.0" />
+                                                                        <VBox prefHeight="200.0" prefWidth="100.0">
+                                                                           <children>
+                                                                              <Button id="hotDrinkPage" fx:id="hotDrinkPaneButton" mnemonicParsing="false" onAction="#showHotDrinksPane" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Hot Drinks">
+                                                                                 <cursor>
+                                                                                    <Cursor fx:constant="HAND" />
+                                                                                 </cursor>
+                                                                              </Button>
+                                                                              <Button id="coldDrinkPage" fx:id="coldDrinkPaneButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#showColdDrinksPane" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Cold Drinks">
+                                                                                 <cursor>
+                                                                                    <Cursor fx:constant="HAND" />
+                                                                                 </cursor>
+                                                                              </Button>
+                                                                              <Button id="otherDrinkPage" fx:id="otherDrinksPaneButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#showOtherDrinksPane" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Other Drinks">
+                                                                                 <cursor>
+                                                                                    <Cursor fx:constant="HAND" />
+                                                                                 </cursor>
+                                                                              </Button>
+                                                                           </children>
+                                                                        </VBox>
+                                                                     </children>
+                                                                  </HBox>
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </content>
+                                                      </Tab>
+                                                      <Tab fx:id="foodTabPane" onSelectionChanged="#showBreakFastFoodPane" text="food">
+                                                         <content>
+                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                               <children>
+                                                                  <HBox prefHeight="512.0" prefWidth="816.0">
+                                                                     <children>
+                                                                        <AnchorPane fx:id="foodPane" prefHeight="512.0" prefWidth="715.0" />
+                                                                        <VBox prefHeight="120.0" prefWidth="100.0">
+                                                                           <children>
+                                                                              <Button id="breakfastPage" fx:id="breakFastPaneButton" mnemonicParsing="false" onAction="#showBreakFastFoodPane" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="BreakFast" />
+                                                                              <Button id="lunchPage" fx:id="lunchPaneButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#showLunchFoodPane" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Lunch" />
+                                                                           </children>
+                                                                        </VBox>
+                                                                     </children>
+                                                                  </HBox>
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </content>
+                                                      </Tab>
+                                                   </tabs>
+                                                </TabPane>
                                              </children>
                                           </AnchorPane>
                                        </children>
-                                    </VBox>
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                                 <children>
-                                    <VBox layoutX="-2.0" layoutY="21.0" prefHeight="242.0" prefWidth="271.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    </StackPane>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                        <children>
-                                          <Button fx:id="payNowButton" mnemonicParsing="false" prefHeight="85.0" prefWidth="275.0" style="-fx-font-size: 20; -fx-background-color: green; -fx-border-color: black;" text="Pay Now">
-                                             <font>
-                                                <Font size="24.0" />
-                                             </font>
-                                          </Button>
-                                          <Button fx:id="removeItemButton" mnemonicParsing="false" onAction="#handleRemoveItem" prefHeight="52.0" prefWidth="275.0" style="-fx-font-size: 16; -fx-border-color: black;" text="Remove Item">
-                                             <font>
-                                                <Font size="18.0" />
-                                             </font>
-                                          </Button>
-                                          <Button fx:id="removeAllItemButton" layoutX="10.0" layoutY="91.0" mnemonicParsing="false" onAction="#handleRemoveAllItems" prefHeight="52.0" prefWidth="275.0" style="-fx-font-size: 16; -fx-border-color: black;" text="Remove All Item">
-                                             <font>
-                                                <Font size="18.0" />
-                                             </font>
-                                          </Button>
-                                          <Button fx:id="reviewOrdersButton" layoutX="10.0" layoutY="143.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="275.0" style="-fx-font-size: 16; -fx-border-color: black;" text="Review Orders">
-                                             <font>
-                                                <Font size="18.0" />
-                                             </font>
-                                          </Button>
+                                          <HBox prefHeight="242.0" prefWidth="816.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <children>
+                                                <VBox alignment="CENTER" prefHeight="242.0" prefWidth="150.0">
+                                                   <children>
+                                                      <Button fx:id="smallSizeButton" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: grey; -fx-font-size: 16;" text="Small">
+                                                         <VBox.margin>
+                                                            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                                         </VBox.margin>
+                                                      </Button>
+                                                      <Button fx:id="mediumSizeButton" layoutX="188.0" layoutY="101.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: grey; -fx-font-size: 16;" text="Medium">
+                                                         <VBox.margin>
+                                                            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                                         </VBox.margin>
+                                                      </Button>
+                                                      <Button fx:id="largeSizeButton" layoutX="188.0" layoutY="131.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: grey; -fx-font-size: 16;" text="Large">
+                                                         <VBox.margin>
+                                                            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                                         </VBox.margin>
+                                                      </Button>
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                                   </HBox.margin>
+                                                </VBox>
+                                                <GridPane hgap="1.0" prefHeight="242.0" prefWidth="320.0" vgap="2.0">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                   <children>
+                                                      <Button mnemonicParsing="false" onAction="#addModificationToList" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: black; -fx-font-size: 16;" text="Regular" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                      <Button layoutX="10.0" layoutY="21.0" mnemonicParsing="false" onAction="#addModificationToList" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: black; -fx-font-size: 16;" text="Regular w Milk" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                                      <Button layoutX="10.0" layoutY="21.0" mnemonicParsing="false" onAction="#addModificationToList" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: black; -fx-font-size: 16;" text="DD w Milk" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                      <Button layoutX="160.0" layoutY="21.0" mnemonicParsing="false" onAction="#addModificationToList" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: black; -fx-font-size: 16;" text="DoubleDouble" textFill="#fffefe" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                      <Button layoutX="10.0" layoutY="102.0" mnemonicParsing="false" onAction="#addModificationToList" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: black; -fx-font-size: 16;" text="TT w Milk" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                      <Button layoutX="10.0" layoutY="102.0" mnemonicParsing="false" onAction="#addModificationToList" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: black; -fx-font-size: 16;" text="TripleTriple" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                                   </HBox.margin>
+                                                </GridPane>
+                                                <VBox alignment="CENTER_RIGHT" prefHeight="242.0" prefWidth="150.0">
+                                                   <children>
+                                                      <Button mnemonicParsing="false" onAction="#addModificationToList" prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: pink; -fx-font-size: 16;" text="Cream" VBox.vgrow="ALWAYS">
+                                                         <VBox.margin>
+                                                            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                                         </VBox.margin>
+                                                      </Button>
+                                                      <Button layoutX="188.0" layoutY="101.0" mnemonicParsing="false" onAction="#addModificationToList" prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: pink; -fx-font-size: 16;" text="Milk">
+                                                         <VBox.margin>
+                                                            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                                         </VBox.margin>
+                                                      </Button>
+                                                      <Button layoutX="188.0" layoutY="131.0" mnemonicParsing="false" onAction="#addModificationToList" prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: pink; -fx-font-size: 16;" text="Sugar">
+                                                         <VBox.margin>
+                                                            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                                         </VBox.margin>
+                                                      </Button>
+                                                      <Button layoutX="10.0" layoutY="41.0" mnemonicParsing="false" onAction="#addModificationToList" prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: pink; -fx-font-size: 16;" text="Sweetner">
+                                                         <VBox.margin>
+                                                            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                                         </VBox.margin>
+                                                      </Button>
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                                   </HBox.margin>
+                                                </VBox>
+                                                <GridPane alignment="CENTER" hgap="5.0" prefHeight="242.0" prefWidth="249.0" vgap="5.0">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints />
+                                                      <ColumnConstraints />
+                                                      <ColumnConstraints />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints />
+                                                      <RowConstraints />
+                                                      <RowConstraints />
+                                                   </rowConstraints>
+                                                   <HBox.margin>
+                                                      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <Button onAction="#numberPadHandler" prefHeight="75" prefWidth="75" text="1" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                                      <Button onAction="#numberPadHandler" prefHeight="75" prefWidth="75" text="2" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                                      <Button onAction="#numberPadHandler" prefHeight="75" prefWidth="75" text="3" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                                                      <Button onAction="#numberPadHandler" prefHeight="75" prefWidth="75" text="4" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                                      <Button onAction="#numberPadHandler" prefHeight="75" prefWidth="75" text="5" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                      <Button onAction="#numberPadHandler" prefHeight="75" prefWidth="75" text="6" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                      <Button onAction="#numberPadHandler" prefHeight="75" prefWidth="75" text="7" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                                      <Button onAction="#numberPadHandler" prefHeight="75" prefWidth="75" text="8" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                      <Button onAction="#numberPadHandler" prefHeight="75" prefWidth="75" text="9" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                   </children>
+                                                </GridPane>
+                                             </children>
+                                          </HBox>
                                        </children>
-                                    </VBox>
-                                 </children>
-                              </AnchorPane>
-                           </items>
-                        </SplitPane>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                    </AnchorPane>
+                                 </items>
+                              </SplitPane>
+                           </children>
+                        </AnchorPane>
+                     </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="orderReviewPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: skyblue;" visible="false">
+               <children>
+                  <VBox prefHeight="832.0" prefWidth="1107.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <SplitPane dividerPositions="0.7" orientation="VERTICAL" prefHeight="820.0" prefWidth="818.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <items>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                        <AnchorPane prefHeight="756.0" prefWidth="1107.0">
+                           <children>
+                              <GridPane fx:id="orderHistoryViewsGrid" prefHeight="751.0" prefWidth="1097.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints maxHeight="480.0" minHeight="10.0" prefHeight="375.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="397.0" minHeight="10.0" prefHeight="376.0" />
+                                </rowConstraints>
                                  <children>
-                                    <TabPane fx:id="tabPane" layoutX="235.0" layoutY="101.0" prefHeight="570.0" prefWidth="816.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <tabs>
-                                          <Tab fx:id="bakeryTabPane" onSelectionChanged="#showMuffinPane" text="Bakery">
-                                             <content>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                                   <children>
-                                                      <HBox prefHeight="512.0" prefWidth="816.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                         <children>
-                                                            <AnchorPane fx:id="bakeryPane" prefHeight="519.0" prefWidth="725.0" />
-                                                            <VBox prefHeight="180.0" prefWidth="100.0">
-                                                               <children>
-                                                                  <Button id="muffinPage" fx:id="muffinPaneButton" mnemonicParsing="false" onAction="#showMuffinPane" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Muffins">
-                                                                     <cursor>
-                                                                        <Cursor fx:constant="HAND" />
-                                                                     </cursor>
-                                                                  </Button>
-                                                                  <Button id="donutPage" fx:id="donutPaneButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#showDonutPane" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Donuts">
-                                                                     <cursor>
-                                                                        <Cursor fx:constant="HAND" />
-                                                                     </cursor>
-                                                                  </Button>
-                                                                  <Button id="pasteryPage" fx:id="pasteryPaneButton" layoutX="10.0" layoutY="42.0" mnemonicParsing="false" onAction="#showPasteryPane" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Pastery" VBox.vgrow="ALWAYS">
-                                                                     <cursor>
-                                                                        <Cursor fx:constant="HAND" />
-                                                                     </cursor>
-                                                                  </Button>
-                                                               </children>
-                                                            </VBox>
-                                                         </children>
-                                                      </HBox>
-                                                   </children>
-                                                </AnchorPane>
-                                             </content>
-                                          </Tab>
-                                          <Tab fx:id="drinksTabPane" onSelectionChanged="#showHotDrinksPane" text="Drinks">
-                                             <content>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                                   <children>
-                                                      <HBox prefHeight="512.0" prefWidth="816.0">
-                                                         <children>
-                                                            <AnchorPane fx:id="drinksPane" prefHeight="512.0" prefWidth="725.0" />
-                                                            <VBox prefHeight="200.0" prefWidth="100.0">
-                                                               <children>
-                                                                  <Button id="hotDrinkPage" fx:id="hotDrinkPaneButton" mnemonicParsing="false" onAction="#showHotDrinksPane" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Hot Drinks">
-                                                                     <cursor>
-                                                                        <Cursor fx:constant="HAND" />
-                                                                     </cursor>
-                                                                  </Button>
-                                                                  <Button id="coldDrinkPage" fx:id="coldDrinkPaneButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#showColdDrinksPane" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Cold Drinks">
-                                                                     <cursor>
-                                                                        <Cursor fx:constant="HAND" />
-                                                                     </cursor>
-                                                                  </Button>
-                                                                  <Button id="otherDrinkPage" fx:id="otherDrinksPaneButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#showOtherDrinksPane" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Other Drinks">
-                                                                     <cursor>
-                                                                        <Cursor fx:constant="HAND" />
-                                                                     </cursor>
-                                                                  </Button>
-                                                               </children>
-                                                            </VBox>
-                                                         </children>
-                                                      </HBox>
-                                                   </children>
-                                                </AnchorPane>
-                                             </content>
-                                          </Tab>
-                                          <Tab fx:id="foodTabPane" onSelectionChanged="#showBreakFastFoodPane" text="food">
-                                             <content>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                                   <children>
-                                                      <HBox prefHeight="512.0" prefWidth="816.0">
-                                                         <children>
-                                                            <AnchorPane fx:id="foodPane" prefHeight="512.0" prefWidth="715.0" />
-                                                            <VBox prefHeight="120.0" prefWidth="100.0">
-                                                               <children>
-                                                                  <Button id="breakfastPage" fx:id="breakFastPaneButton" mnemonicParsing="false" onAction="#showBreakFastFoodPane" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="BreakFast" />
-                                                                  <Button id="lunchPage" fx:id="lunchPaneButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#showLunchFoodPane" prefHeight="60.0" prefWidth="100.0" style="-fx-border-color: black;" text="Lunch" />
-                                                               </children>
-                                                            </VBox>
-                                                         </children>
-                                                      </HBox>
-                                                   </children>
-                                                </AnchorPane>
-                                             </content>
-                                          </Tab>
-                                       </tabs>
-                                    </TabPane>
+                                    <TreeView fx:id="orderListView1" prefHeight="756.0" prefWidth="366.0" GridPane.rowSpan="2" />
+                                    <TreeView fx:id="orderListView2" prefHeight="759.0" prefWidth="388.0" GridPane.columnIndex="1" />
+                                    <TreeView fx:id="orderListView3" prefHeight="759.0" prefWidth="388.0" GridPane.columnIndex="2" />
+                                    <TreeView fx:id="orderListView4" prefHeight="759.0" prefWidth="388.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TreeView fx:id="orderListView5" prefHeight="759.0" prefWidth="388.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                  </children>
-                              </AnchorPane>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                                 <children>
-                                    <HBox prefHeight="242.0" prefWidth="816.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <children>
-                                          <VBox alignment="CENTER" prefHeight="242.0" prefWidth="150.0">
-                                             <children>
-                                                <Button fx:id="smallSizeButton" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: grey; -fx-font-size: 16;" text="Small">
-                                                   <VBox.margin>
-                                                      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-                                                   </VBox.margin>
-                                                </Button>
-                                                <Button fx:id="mediumSizeButton" layoutX="188.0" layoutY="101.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: grey; -fx-font-size: 16;" text="Medium">
-                                                   <VBox.margin>
-                                                      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-                                                   </VBox.margin>
-                                                </Button>
-                                                <Button fx:id="largeSizeButton" layoutX="188.0" layoutY="131.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: grey; -fx-font-size: 16;" text="Large">
-                                                   <VBox.margin>
-                                                      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-                                                   </VBox.margin>
-                                                </Button>
-                                             </children>
-                                             <HBox.margin>
-                                                <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-                                             </HBox.margin>
-                                          </VBox>
-                                          <GridPane hgap="1.0" prefHeight="242.0" prefWidth="320.0" vgap="2.0">
-                                             <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                             </columnConstraints>
-                                             <rowConstraints>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                             </rowConstraints>
-                                             <children>
-                                                <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: black; -fx-font-size: 16;" text="Regular" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                                <Button layoutX="10.0" layoutY="21.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: black; -fx-font-size: 16;" text="Regular Milk" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                                <Button layoutX="10.0" layoutY="21.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: black; -fx-font-size: 16;" text="Double Double w Milk" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                                <Button layoutX="160.0" layoutY="21.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: black; -fx-font-size: 16;" text="Double Double" textFill="#fffefe" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                                <Button layoutX="10.0" layoutY="102.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: black; -fx-font-size: 16;" text="Triple Triple w Milk" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                                                <Button layoutX="10.0" layoutY="102.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: black; -fx-font-size: 16;" text="Triple Triple" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                                             </children>
-                                             <HBox.margin>
-                                                <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-                                             </HBox.margin>
-                                          </GridPane>
-                                          <VBox alignment="CENTER_RIGHT" prefHeight="242.0" prefWidth="150.0">
-                                             <children>
-                                                <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: pink; -fx-font-size: 16;" text="Cream" VBox.vgrow="ALWAYS">
-                                                   <VBox.margin>
-                                                      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-                                                   </VBox.margin>
-                                                </Button>
-                                                <Button layoutX="188.0" layoutY="101.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: pink; -fx-font-size: 16;" text="Milk">
-                                                   <VBox.margin>
-                                                      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-                                                   </VBox.margin>
-                                                </Button>
-                                                <Button layoutX="188.0" layoutY="131.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: pink; -fx-font-size: 16;" text="Sugar">
-                                                   <VBox.margin>
-                                                      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-                                                   </VBox.margin>
-                                                </Button>
-                                                <Button layoutX="10.0" layoutY="41.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: pink; -fx-font-size: 16;" text="Sweetner">
-                                                   <VBox.margin>
-                                                      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-                                                   </VBox.margin>
-                                                </Button>
-                                             </children>
-                                             <HBox.margin>
-                                                <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-                                             </HBox.margin>
-                                          </VBox>
-                                          <GridPane alignment="CENTER" hgap="5.0" prefHeight="242.0" prefWidth="249.0" vgap="5.0">
-                                             <columnConstraints>
-                                                <ColumnConstraints />
-                                                <ColumnConstraints />
-                                                <ColumnConstraints />
-                                             </columnConstraints>
-                                             <rowConstraints>
-                                                <RowConstraints />
-                                                <RowConstraints />
-                                                <RowConstraints />
-                                             </rowConstraints>
-                                             <HBox.margin>
-                                                <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-                                             </HBox.margin>
-                                             <children>
-                                                <Button prefHeight="75" prefWidth="75" text="1" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                                                <Button prefHeight="75" prefWidth="75" text="2" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                                                <Button prefHeight="75" prefWidth="75" text="3" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-                                                <Button prefHeight="75" prefWidth="75" text="4" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                                                <Button prefHeight="75" prefWidth="75" text="5" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Button prefHeight="75" prefWidth="75" text="6" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                                <Button prefHeight="75" prefWidth="75" text="7" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                                                <Button prefHeight="75" prefWidth="75" text="8" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <Button prefHeight="75" prefWidth="75" text="9" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                             </children>
-                                          </GridPane>
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </AnchorPane>
-                           </items>
-                        </SplitPane>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                        <ButtonBar prefHeight="75.0" prefWidth="1107.0">
+                          <buttons>
+                              <Button fx:id="exitOrderViewButton" graphicTextGap="6.0" layoutX="1047.0" layoutY="25.0" mnemonicParsing="false" prefHeight="95.0" prefWidth="131.0" style="-fx-background-color: #c75050; -fx-font-size: 20;" text="Exit">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="prevPageOrderViewButton" disable="true" graphicTextGap="6.0" layoutX="704.0" layoutY="11.0" mnemonicParsing="false" prefHeight="98.0" prefWidth="157.0" style="-fx-font-size: 20;" text="&lt; Prev Page">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="nextPageOrderViewButton" graphicTextGap="6.0" layoutX="563.0" layoutY="11.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="131.0" style="-fx-font-size: 20;" text="Next Page &gt;">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                          </buttons>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </ButtonBar>
                      </children>
-                  </AnchorPane>
-               </items>
-            </SplitPane>
+                  </VBox>
+               </children>
+            </AnchorPane>
          </children>
-      </AnchorPane>
+      </StackPane>
    </children>
 </AnchorPane>

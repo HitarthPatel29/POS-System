@@ -2,47 +2,55 @@ package io.TimHaritonsPOS.Items.DrinkItems;
 
 import io.TimHaritonsPOS.Items.Item;
 import io.TimHaritonsPOS.NamePricePair;
+import javafx.scene.control.Alert;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.Scanner;
 
 public abstract class DrinkItems implements Item {
 
     private final int id;
     protected final char size;
+
+    protected int amount = 1;
     private final String itemName;
     private LinkedList<NamePricePair> ingredients;
     protected LinkedList<NamePricePair> modifications = new LinkedList<>();
     private final ArrayList<NamePricePair> modifiers = new ArrayList<>(Arrays.asList(
-            new NamePricePair("Regular", 0.00),
-            new NamePricePair("DoubleDouble", 0.00),
-            new NamePricePair("TripleTriple", 0.00),
-            new NamePricePair("Cream", 0.00),
-            new NamePricePair("Milk", 0.00),
-            new NamePricePair("Sugar", 0.00),
-            new NamePricePair("Sweetner", 0.00),
-            new NamePricePair("Almond Milk", 0.50),
-            new NamePricePair("Oat Milk", 0.50),
-            new NamePricePair("whip topping", 1.00),
-            new NamePricePair("Cane Syrup", 0.75)
+        new NamePricePair("Regular", 0.00),
+        new NamePricePair("DoubleDouble", 0.00),
+        new NamePricePair("TripleTriple", 0.00),
+        new NamePricePair("Cream", 0.00),
+        new NamePricePair("Milk", 0.00),
+        new NamePricePair("Sugar", 0.00),
+        new NamePricePair("Sweetner", 0.00),
+        new NamePricePair("Almond Milk", 0.50),
+        new NamePricePair("Oat Milk", 0.50),
+        new NamePricePair("whip topping", 1.00),
+        new NamePricePair("Cane Syrup", 0.75)
     ));
+
+    @Override
+    public int getAmount() {
+        return amount;
+    }
+
+    @Override
+    public void setAmount(int amount) {
+        this.amount = amount > 0 ? amount : 1;
+    }
 
     public DrinkItems(int id, char size, String itemName ) {
         this.id = id;
         this.size = size;
         this.itemName = itemName;
-//        listOfModifiers();
-//        setModifications();
     }
     public DrinkItems(int id, char size, String itemName , ArrayList<NamePricePair> modifications) {
         this.id = id;
         this.size = size;
         this.itemName = itemName;
         this.modifications.addAll(modifications);
-//        listOfModifiers();
-//        setModifications();
     }
 
     public abstract double getPrice();
@@ -64,6 +72,11 @@ public abstract class DrinkItems implements Item {
         return ingredients;
     }
 
+    @Override
+    public ArrayList<NamePricePair> getModifiers() {
+        return modifiers;
+    }
+
     private void listOfModifiers(){
         System.out.println("Pick Modifications for " + itemName + " or else ENTER 9");
         int i = 1;
@@ -74,35 +87,35 @@ public abstract class DrinkItems implements Item {
         System.out.println((i) +". No more Addition!!!");
     }
 
-    private void setModifications(){
-        Scanner sc = new Scanner(System.in);
-        int modifierNum = 0;
-        int modifierAmount = 1;
-        while (true) {
-            System.out.println("Enter the number to add Modifiers : ");
-            modifierNum = sc.nextInt();
-            if (modifierNum == modifiers.size()+1) {
-                break;
-            }
-            NamePricePair mod = modifiers.get(modifierNum-1);
-            mod.setAmount(modifierAmount);
-            modifications.add(mod);
-        }
+    @Override
+    public void setModifications(NamePricePair newModification){
+        modifications.add(newModification);
     }
-    private void setModifications(String modifier, int amount){
-        if (modifier.equals("DoubleDoubleMilk")){
-             modifications.add(new NamePricePair("Milk", 0.00, 2));
-             modifications.add(new NamePricePair("Sugar", 0.00, 2));
-        } else if (modifier.equals("TripleTripleMilk")) {
-            modifications.add(new NamePricePair("Milk",0.00, 3));
-            modifications.add(new NamePricePair("sugar",0.00, 3));
-        } else if (modifier.equals("RegularMilk")) {
-            modifications.add(new NamePricePair("Milk",0.00));
-            modifications.add(new NamePricePair("sugar",0.00));
-        } else {
-            NamePricePair mod = modifiers.get(modifiers.indexOf(modifier));
-            mod.setAmount(amount);
-            modifications.add(mod) ;
+
+    @Override
+    public void removeModification(NamePricePair modificationToBeRemoved) {
+        modifications.remove(modificationToBeRemoved);
+    }
+
+    public void setModifications(String modifier, int amount){
+        try {
+            if (modifier.equals("DoubleDoubleMilk")) {
+                modifications.add(new NamePricePair("Milk", 0.00, 2));
+                modifications.add(new NamePricePair("Sugar", 0.00, 2));
+            } else if (modifier.equals("TripleTripleMilk")) {
+                modifications.add(new NamePricePair("Milk", 0.00, 3));
+                modifications.add(new NamePricePair("sugar", 0.00, 3));
+            } else if (modifier.equals("RegularMilk")) {
+                modifications.add(new NamePricePair("Milk", 0.00));
+                modifications.add(new NamePricePair("sugar", 0.00));
+            } else {
+                NamePricePair mod = modifiers.get(modifiers.indexOf(modifier));
+                mod.setAmount(amount);
+                modifications.add(mod);
+            }
+        }
+        catch (Exception e){
+            System.out.println("Jay shree Ram");
         }
     }
 

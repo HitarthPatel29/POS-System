@@ -27,6 +27,6 @@ public class latte extends DrinkItems{
                 break;
         }
         totalPrice += super.modifications.stream().mapToDouble(NamePricePair::getPrice).sum();
-        return totalPrice;
+        return amount * totalPrice;
     }
 }

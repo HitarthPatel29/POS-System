@@ -56,6 +56,22 @@ public abstract class FoodItem implements Item {
         return String.format("%-24s $%4.2f",itemName, getPrice());
     }
 
+
+    @Override
+    public ArrayList<NamePricePair> getModifiers() {
+        return modifiers;
+    }
+
+    @Override
+    public int getAmount() {
+        return 0;
+    }
+
+    @Override
+    public void setAmount(int i) {
+
+    }
+
     private void listOfModifiers(){
         System.out.println("Pick Modifications for " + itemName + " or else ENTER 9");
         int i = 1;
@@ -67,22 +83,14 @@ public abstract class FoodItem implements Item {
         System.out.println(i+". No more Addition!!!");
     }
 
-    private void setModifications(){
-        Scanner sc = new Scanner(System.in);
-        int modifierNum = 0;
-        while (true) {
-            System.out.println("Enter the number to add Modifiers : ");
-            modifierNum = sc.nextInt();
-            if (modifierNum == modifiers.size()+1) {
-                printIngredients();
-                System.out.println("Enter num to remove : ");
-                removeIngredients(sc.nextInt());
-                printIngredients();
-                continue;
-            }
-            else if (modifierNum == modifiers.size()+2) break;
-            modifications.add(modifiers.get(modifierNum-1));
-        }
+    @Override
+    public void setModifications(NamePricePair newModification){
+        modifications.add(newModification);
+    }
+
+    @Override
+    public void removeModification(NamePricePair modificationToBeRemoved) {
+        modifications.remove(modificationToBeRemoved);
     }
 
     private String printModification(){

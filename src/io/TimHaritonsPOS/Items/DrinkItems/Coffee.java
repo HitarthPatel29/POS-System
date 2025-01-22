@@ -27,6 +27,6 @@ public class Coffee extends DrinkItems{
         for (NamePricePair modifier: modifications) {
             totalPrice+=modifier.getPrice();
         }
-        return totalPrice;
+        return amount * totalPrice;
     }
 }
