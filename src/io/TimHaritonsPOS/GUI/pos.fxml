@@ -313,16 +313,17 @@
                   </SplitPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="orderReviewPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: skyblue;" visible="false">
+            <AnchorPane fx:id="orderReviewPane" prefHeight="200.0" prefWidth="1097.0" style="-fx-background-color: skyblue;">
                <children>
                   <VBox prefHeight="832.0" prefWidth="1107.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <AnchorPane prefHeight="756.0" prefWidth="1107.0">
                            <children>
-                              <GridPane fx:id="orderHistoryViewsGrid" prefHeight="751.0" prefWidth="1097.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <GridPane fx:id="orderHistoryViewsGrid" hgap="1.0" prefHeight="751.0" prefWidth="1097.0" vgap="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 </columnConstraints>
                                 <rowConstraints>
@@ -330,11 +331,349 @@
                                   <RowConstraints maxHeight="397.0" minHeight="10.0" prefHeight="376.0" />
                                 </rowConstraints>
                                  <children>
-                                    <TreeView fx:id="orderListView1" prefHeight="756.0" prefWidth="366.0" GridPane.rowSpan="2" />
-                                    <TreeView fx:id="orderListView2" prefHeight="759.0" prefWidth="388.0" GridPane.columnIndex="1" />
-                                    <TreeView fx:id="orderListView3" prefHeight="759.0" prefWidth="388.0" GridPane.columnIndex="2" />
-                                    <TreeView fx:id="orderListView4" prefHeight="759.0" prefWidth="388.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <TreeView fx:id="orderListView5" prefHeight="759.0" prefWidth="388.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                    <VBox prefHeight="577.0" prefWidth="271.0" style="-fx-border-color: grey; -fx-border-width: 2;" GridPane.rowSpan="2">
+                                       <children>
+                                          <TreeView fx:id="orderListView1" prefHeight="756.0" prefWidth="366.0" />
+                                          <AnchorPane maxHeight="85.0" maxWidth="366.0" minHeight="72.0" minWidth="270.0" prefHeight="72.0" prefWidth="366.0" VBox.vgrow="NEVER">
+                                             <children>
+                                                <HBox alignment="TOP_RIGHT" prefHeight="85.0" prefWidth="366.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <children>
+                                                      <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SubTotal : ">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tax :">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total : ">
+                                                               <font>
+                                                                  <Font size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </VBox>
+                                                      <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                                                         <children>
+                                                            <Text fx:id="subTotalText1" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" />
+                                                            <Text fx:id="taxText1" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" />
+                                                            <Text fx:id="totalText1" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
+                                                               <font>
+                                                                  <Font size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                         <padding>
+                                                            <Insets right="10.0" />
+                                                         </padding>
+                                                      </VBox>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                             </padding>
+                                          </AnchorPane>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="577.0" prefWidth="271.0" style="-fx-border-color: grey; -fx-border-width: 2;" GridPane.columnIndex="1">
+                                       <children>
+                                          <TreeView fx:id="orderListView2" prefHeight="759.0" prefWidth="388.0" />
+                                          <AnchorPane maxHeight="85.0" maxWidth="366.0" minHeight="72.0" minWidth="270.0" prefHeight="72.0" prefWidth="366.0" VBox.vgrow="NEVER">
+                                             <children>
+                                                <HBox alignment="TOP_RIGHT" prefHeight="85.0" prefWidth="366.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <children>
+                                                      <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SubTotal : ">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tax :">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total : ">
+                                                               <font>
+                                                                  <Font size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </VBox>
+                                                      <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                                                         <children>
+                                                            <Text fx:id="subTotalText2" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" />
+                                                            <Text fx:id="taxText2" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" />
+                                                            <Text fx:id="totalText2" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
+                                                               <font>
+                                                                  <Font size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                         <padding>
+                                                            <Insets right="10.0" />
+                                                         </padding>
+                                                      </VBox>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                             </padding>
+                                          </AnchorPane>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="577.0" prefWidth="271.0" style="-fx-border-color: grey; -fx-border-width: 2;" GridPane.columnIndex="2">
+                                       <children>
+                                          <TreeView fx:id="orderListView3" prefHeight="759.0" prefWidth="388.0" />
+                                          <AnchorPane maxHeight="85.0" maxWidth="366.0" minHeight="72.0" minWidth="270.0" prefHeight="72.0" prefWidth="366.0" VBox.vgrow="NEVER">
+                                             <children>
+                                                <HBox alignment="TOP_RIGHT" prefHeight="85.0" prefWidth="366.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <children>
+                                                      <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SubTotal : ">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tax :">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total : ">
+                                                               <font>
+                                                                  <Font size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </VBox>
+                                                      <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                                                         <children>
+                                                            <Text fx:id="subTotalText3" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" />
+                                                            <Text fx:id="taxText3" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" />
+                                                            <Text fx:id="totalText3" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
+                                                               <font>
+                                                                  <Font size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                         <padding>
+                                                            <Insets right="10.0" />
+                                                         </padding>
+                                                      </VBox>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                             </padding>
+                                          </AnchorPane>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="743.0" layoutY="382.0" prefHeight="577.0" prefWidth="271.0" style="-fx-border-color: grey; -fx-border-width: 2;" GridPane.columnIndex="3">
+                                       <children>
+                                          <TreeView fx:id="orderListView4" prefHeight="759.0" prefWidth="388.0" />
+                                          <AnchorPane maxHeight="85.0" maxWidth="366.0" minHeight="72.0" minWidth="270.0" prefHeight="72.0" prefWidth="366.0" VBox.vgrow="NEVER">
+                                             <children>
+                                                <HBox alignment="TOP_RIGHT" prefHeight="85.0" prefWidth="366.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <children>
+                                                      <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SubTotal : ">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tax :">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total : ">
+                                                               <font>
+                                                                  <Font size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </VBox>
+                                                      <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                                                         <children>
+                                                            <Text fx:id="subTotalText4" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" />
+                                                            <Text fx:id="taxText4" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" />
+                                                            <Text fx:id="totalText4" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
+                                                               <font>
+                                                                  <Font size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                         <padding>
+                                                            <Insets right="10.0" />
+                                                         </padding>
+                                                      </VBox>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                             </padding>
+                                          </AnchorPane>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="577.0" prefWidth="271.0" style="-fx-border-color: grey; -fx-border-width: 2;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <children>
+                                          <TreeView fx:id="orderListView5" prefHeight="759.0" prefWidth="388.0" />
+                                          <AnchorPane maxHeight="85.0" maxWidth="366.0" minHeight="72.0" minWidth="270.0" prefHeight="72.0" prefWidth="366.0" VBox.vgrow="NEVER">
+                                             <children>
+                                                <HBox alignment="TOP_RIGHT" prefHeight="85.0" prefWidth="366.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <children>
+                                                      <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SubTotal : ">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tax :">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total : ">
+                                                               <font>
+                                                                  <Font size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </VBox>
+                                                      <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                                                         <children>
+                                                            <Text fx:id="subTotalText5" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" />
+                                                            <Text fx:id="taxText5" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" />
+                                                            <Text fx:id="totalText5" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
+                                                               <font>
+                                                                  <Font size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                         <padding>
+                                                            <Insets right="10.0" />
+                                                         </padding>
+                                                      </VBox>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                             </padding>
+                                          </AnchorPane>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="577.0" prefWidth="271.0" style="-fx-border-color: grey; -fx-border-width: 2;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                       <children>
+                                          <TreeView fx:id="orderListView6" prefHeight="759.0" prefWidth="388.0" />
+                                          <AnchorPane maxHeight="85.0" maxWidth="366.0" minHeight="72.0" minWidth="270.0" prefHeight="72.0" prefWidth="366.0" VBox.vgrow="NEVER">
+                                             <children>
+                                                <HBox alignment="TOP_RIGHT" prefHeight="85.0" prefWidth="366.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <children>
+                                                      <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SubTotal : ">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tax :">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total : ">
+                                                               <font>
+                                                                  <Font size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </VBox>
+                                                      <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                                                         <children>
+                                                            <Text fx:id="subTotalText6" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" />
+                                                            <Text fx:id="taxText6" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" />
+                                                            <Text fx:id="totalText6" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
+                                                               <font>
+                                                                  <Font size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                         <padding>
+                                                            <Insets right="10.0" />
+                                                         </padding>
+                                                      </VBox>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                             </padding>
+                                          </AnchorPane>
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="743.0" layoutY="382.0" prefHeight="577.0" prefWidth="271.0" style="-fx-border-color: grey; -fx-border-width: 2;" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                       <children>
+                                          <TreeView fx:id="orderListView7" prefHeight="759.0" prefWidth="388.0" />
+                                          <AnchorPane maxHeight="85.0" maxWidth="366.0" minHeight="72.0" minWidth="270.0" prefHeight="72.0" prefWidth="366.0" VBox.vgrow="NEVER">
+                                             <children>
+                                                <HBox alignment="TOP_RIGHT" prefHeight="85.0" prefWidth="366.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <children>
+                                                      <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                                                         <children>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SubTotal : ">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tax :">
+                                                               <font>
+                                                                  <Font size="14.0" />
+                                                               </font>
+                                                            </Text>
+                                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total : ">
+                                                               <font>
+                                                                  <Font size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                      </VBox>
+                                                      <VBox fx:id="reviewTextCombo1" alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                                                         <children>
+                                                            <Text fx:id="subTotalText7" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" />
+                                                            <Text fx:id="taxText7" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" />
+                                                            <Text fx:id="totalText7" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00">
+                                                               <font>
+                                                                  <Font size="18.0" />
+                                                               </font>
+                                                            </Text>
+                                                         </children>
+                                                         <padding>
+                                                            <Insets right="10.0" />
+                                                         </padding>
+                                                      </VBox>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                             </padding>
+                                          </AnchorPane>
+                                       </children>
+                                    </VBox>
                                  </children>
                               </GridPane>
                            </children>

@@ -1,9 +1,7 @@
 package io.TimHaritonsPOS.Items;
 
 import io.TimHaritonsPOS.NamePricePair;
-
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public interface Item {
     public double getPrice();
@@ -19,5 +17,4 @@ public interface Item {
 
     public void setAmount(int i);
     public String toString();
-
 }
