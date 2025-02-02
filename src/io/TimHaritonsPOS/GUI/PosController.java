@@ -3,19 +3,24 @@ package io.TimHaritonsPOS.GUI;
 import io.TimHaritonsPOS.Items.Item;
 import io.TimHaritonsPOS.Items.ItemLists;
 import io.TimHaritonsPOS.NamePricePair;
+import io.TimHaritonsPOS.Order;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTreeCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.util.Callback;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class PosController {
 
     private ArrayList<TreeItem<Item>> orderHistory = new ArrayList<>();
+    private ArrayList<Order> orderHistory2 = new ArrayList<>();
     private TreeItem<Item> orderList;
     private double subTotal = 0;
     private char size;
@@ -42,105 +47,49 @@ public class PosController {
     private TreeView<Item> orderListView5 = new TreeView<>();
 
     @FXML
-    private GridPane orderHistoryViewsGrid;
-
-    private final TreeView<Item>[] listOfOrderHistoryViews = new TreeView[]{orderListView1, orderListView2, orderListView3, orderListView4, orderListView5};
+    private TreeView<Item> orderListView6 = new TreeView<>();
 
     @FXML
-    private Text totalText;
+    private TreeView<Item> orderListView7 = new TreeView<>();
 
     @FXML
-    private Text subTotalText;
+    private Text totalText, subTotalText, taxText;
 
     @FXML
-    private Text taxText;
+    private Text totalText1, subTotalText1, taxText1, totalText2, subTotalText2, taxText2, totalText3, subTotalText3, taxText3, totalText4, subTotalText4, taxText4, totalText5, subTotalText5, taxText5, totalText6, subTotalText6, taxText6, totalText7, subTotalText7, taxText7;
 
     @FXML
     private TabPane tabPane;
 
     @FXML
-    private Tab bakeryTabPane;
+    private Tab bakeryTabPane, drinksTabPane, foodTabPane;
 
     @FXML
-    private Tab drinksTabPane;
+    private AnchorPane orderReviewPane, orderTakerPane;
 
     @FXML
-    private Tab foodTabPane;
+    private AnchorPane bakeryPane, drinksPane, foodPane;
 
     @FXML
-    private AnchorPane orderReviewPane;
+    private AnchorPane itemListPane, modifierPane;
 
     @FXML
-    private AnchorPane orderTakerPane;
+    private Button largeSizeButton, mediumSizeButton, smallSizeButton;
 
     @FXML
-    private AnchorPane bakeryPane;
+    private Button breakFastPaneButton, lunchPaneButton;
 
     @FXML
-    private AnchorPane drinksPane;
+    private Button coldDrinkPaneButton, hotDrinkPaneButton, otherDrinksPaneButton;
 
     @FXML
-    private AnchorPane foodPane;
+    private Button muffinPaneButton, donutPaneButton, pasteryPaneButton;
 
     @FXML
-    private AnchorPane modifierPane;
+    private Button payNowButton, removeAllItemButton, removeItemButton, reviewOrdersButton;
 
     @FXML
-    private AnchorPane itemListPane;
-
-    @FXML
-    private Button breakFastPaneButton;
-
-    @FXML
-    private Button coldDrinkPaneButton;
-
-    @FXML
-    private Button donutPaneButton;
-
-    @FXML
-    private Button largeSizeButton;
-
-    @FXML
-    private Button mediumSizeButton;
-
-    @FXML
-    private Button smallSizeButton;
-
-    @FXML
-    private Button hotDrinkPaneButton;
-
-    @FXML
-    private Button lunchPaneButton;
-
-    @FXML
-    private Button muffinPaneButton;
-
-    @FXML
-    private Button otherDrinksPaneButton;
-
-    @FXML
-    private Button pasteryPaneButton;
-
-    @FXML
-    private Button payNowButton;
-
-    @FXML
-    private Button removeAllItemButton;
-
-    @FXML
-    private Button removeItemButton;
-
-    @FXML
-    private Button reviewOrdersButton;
-
-    @FXML
-    private Button exitOrderViewButton ;
-
-    @FXML
-    private Button prevPageOrderViewButton;
-
-    @FXML
-    private Button nextPageOrderViewButton;
+    private Button exitOrderViewButton, prevPageOrderViewButton, nextPageOrderViewButton;
 
     private final ItemLists itemLists = new ItemLists();
     @FXML
@@ -203,6 +152,27 @@ public class PosController {
         largeSizeButton.setOnAction((event -> size = 'L'));
 
     }
+    private Callback<TreeView<Item>, TreeCell<Item>> createCellFactory() {
+        return tv -> {
+            tv.setShowRoot(false);
+            TreeCell<Item> cell = new TextFieldTreeCell<Item>() {
+                @Override
+                public void updateItem(Item item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty || item == null) {
+                        setText(null);
+                    } else {
+                        setText(item.getDisplayString());
+                        setStyle("-fx-font-family: 'Monospaced'; -fx-text-fill: black; -fx-font-weight: bold;");
+                        setDisclosureNode(null); // Hide disclosure node
+                    }
+                }
+            };
+            cell.setDisable(true);
+            return cell;
+        };
+    }
+
 
     @FXML
     private void showMuffinPane() {
@@ -330,6 +300,7 @@ public class PosController {
 
             orderList.getChildren().add(newOrder);
 
+            size = 0;
             subTotal += item.getPrice();
             printTotal(subTotal);
             System.out.println("Added item: " + item);
@@ -369,6 +340,10 @@ public class PosController {
         }
     }
 
+    /**
+     * This method is buttonHandler for modification buttons in the modifier Pane of each item (Pane that opens when an Item is clicked).
+     * @param newModification
+     */
     private void addModificationToList(Item newModification) {
         try {
             TreeItem<Item> selectedTreeItem = orderListView.getSelectionModel().getSelectedItem();
@@ -386,6 +361,10 @@ public class PosController {
         }
     }
 
+    /**
+     * this method is buttonHandler for the quick coffee modification buttons at the bottom of the main screen
+     * @param event
+     */
     @FXML
     private void addModificationToList(ActionEvent event) {
         Item newModification = null;
@@ -472,15 +451,30 @@ public class PosController {
         System.out.println("Added item: " + newModification);
     }
 
-
-
-
+//    @FXML
+//    private void handlePayNow() {
+//        System.out.println("Payment Process Initiated!");
+//        // Add payment processing logic here
+//        if (orderList.getChildren().size() > 0) {
+//            orderHistory.add(orderList);
+//            orderList = new TreeItem<>();
+//            orderListView.setRoot(orderList);
+//            subTotal = 0;
+//            printTotal(subTotal);
+//            size = 0;
+//            amount = 1;
+//            numberPadToggleOnOFF = false;
+//        }
+//    }
     @FXML
     private void handlePayNow() {
         System.out.println("Payment Process Initiated!");
         // Add payment processing logic here
         if (orderList.getChildren().size() > 0) {
-            orderHistory.add(orderList);
+            Order currentOrder = new Order(orderList, subTotal, "creditCard");
+            orderHistory2.add(currentOrder);
+
+            //resetting everything
             orderList = new TreeItem<>();
             orderListView.setRoot(orderList);
             subTotal = 0;
@@ -530,7 +524,26 @@ public class PosController {
         }
     }
 
+    /**
+     * displays and calculates total values for main Screen
+     * (Text sections are default)
+     * @param subTotal
+     */
     private void printTotal(double subTotal){
+        subTotalText.setText(String.format ("%.2f", subTotal));
+        taxText.setText(String.format ("%.2f", (subTotal*13)/100));
+        totalText.setText(String.format ("%.2f", subTotal + (subTotal*13)/100));
+    }
+
+    /**
+     * displays and calculates total values for review Screen
+     * (Text sections are given in argument)
+     * @param subTotal  subtotal amount of the order
+     * @param subTotalText  Text section for subTotal
+     * @param taxText   Text section for taxTotal
+     * @param totalText     Text section for totalTax
+     */
+    private void printTotal(double subTotal, Text subTotalText, Text taxText, Text totalText){
         subTotalText.setText(String.format ("%.2f", subTotal));
         taxText.setText(String.format ("%.2f", (subTotal*13)/100));
         totalText.setText(String.format ("%.2f", subTotal + (subTotal*13)/100));
@@ -546,36 +559,63 @@ public class PosController {
 
     @FXML
     private void handleReviewOrders() {
+
+        orderListView1.setCellFactory(createCellFactory());
+        orderListView2.setCellFactory(createCellFactory());
+        orderListView3.setCellFactory(createCellFactory());
+        orderListView4.setCellFactory(createCellFactory());
+        orderListView5.setCellFactory(createCellFactory());
+        orderListView6.setCellFactory(createCellFactory());
+        orderListView7.setCellFactory(createCellFactory());
+
         orderReviewPageNum = 0;
         orderReviewPane.setVisible(true);
-        System.out.println("Reviewing Orders:");
-        showReviewPage(orderReviewPageNum);
-        if (orderHistory.size() <= 5) nextPageOrderViewButton.setDisable(true);
+        System.out.println("Reviewing Orders: pageNum : " + orderHistory2.size());
+        showReviewPage(orderReviewPageNum);         //displaying the 1st Order History Page
+        nextPageOrderViewButton.setDisable(orderHistory2.size() <= 7);      //button will be disabled if size <= 7 (true) and will be enabled if size > 6 (false)
 
         exitOrderViewButton.setOnAction(event-> {
             orderReviewPane.setVisible(false);
             orderTakerPane.setVisible(true);
         });
+
         prevPageOrderViewButton.setOnAction(event -> {
-            if (orderReviewPageNum < (orderHistory.size()%5 == 0? orderHistory.size()/5 : (orderHistory.size()/5)+1)) nextPageOrderViewButton.setDisable(false);
+            if (orderReviewPageNum < (orderHistory2.size()%7 == 0? orderHistory2.size()/7 : (orderHistory2.size()/7)+1)) nextPageOrderViewButton.setDisable(false);
             orderReviewPageNum--;
             showReviewPage(orderReviewPageNum);
             if (orderReviewPageNum == 0) prevPageOrderViewButton.setDisable(true);
         });
+
         nextPageOrderViewButton.setOnAction(event -> {
             if (orderReviewPageNum >=0) prevPageOrderViewButton.setDisable(false);
             orderReviewPageNum++;
             showReviewPage(orderReviewPageNum);
-            if (orderReviewPageNum == (orderHistory.size()%5 == 0 ? orderHistory.size()/5 : ((orderHistory.size()/5)+1))-1) nextPageOrderViewButton.setDisable(true);
+            if (orderReviewPageNum == (orderHistory2.size()%7 == 0 ? orderHistory2.size()/7 : ((orderHistory2.size()/7)+1))-1) nextPageOrderViewButton.setDisable(true);
         });
     }
 
+    /**
+     * displays 7 orders form the orderHistory.
+     * if the pageNum = 0 , will display last 7 orders.
+     * if pageNum = 1, will display from last 1+(7)th to last 1+(7+6)th order
+     * if pageNum = n, will display from last 1+(n*7)th to last 1+(n*7)+6th order
+     * @param pageNum
+     */
     private void showReviewPage(int pageNum){
-        int startIndex = orderHistory.size()-1-(pageNum*5);
-        orderListView1.setRoot(orderHistory.size() > (pageNum*5) ? orderHistory.get(startIndex) : null);
-        orderListView2.setRoot(orderHistory.size() > (pageNum*5)+1 ? orderHistory.get(startIndex-1) : null);
-        orderListView3.setRoot(orderHistory.size() > (pageNum*5)+2 ? orderHistory.get(startIndex-2) : null);
-        orderListView4.setRoot(orderHistory.size() > (pageNum*5)+3 ? orderHistory.get(startIndex-3) : null);
-        orderListView5.setRoot(orderHistory.size() > (pageNum*5)+4 ? orderHistory.get(startIndex-4) : null);
+        int startIndex = orderHistory2.size()-1-(pageNum*7);
+        if (orderHistory2.size() > (pageNum*7)) setReviewSection(orderHistory2.get(startIndex), orderListView1, subTotalText1, taxText1, totalText1);
+        if (orderHistory2.size() > (pageNum*7)+1) setReviewSection(orderHistory2.get(startIndex-1), orderListView2, subTotalText2, taxText2, totalText2);
+        if (orderHistory2.size() > (pageNum*7)+2) setReviewSection(orderHistory2.get(startIndex-2), orderListView3, subTotalText3, taxText3, totalText3);
+        if (orderHistory2.size() > (pageNum*7)+3) setReviewSection(orderHistory2.get(startIndex-3), orderListView4, subTotalText4, taxText4, totalText4);
+        if (orderHistory2.size() > (pageNum*7)+4) setReviewSection(orderHistory2.get(startIndex-4), orderListView5, subTotalText5, taxText5, totalText5);
+        if (orderHistory2.size() > (pageNum*7)+5) setReviewSection(orderHistory2.get(startIndex-5), orderListView6, subTotalText6, taxText6, totalText6);
+        if (orderHistory2.size() > (pageNum*7)+6) setReviewSection(orderHistory2.get(startIndex-6), orderListView7, subTotalText7, taxText7, totalText7);
+    }
+
+    private void setReviewSection(Order order, TreeView<Item> listView, Text subTotalText, Text taxText, Text totalText){
+        if (order != null) {
+            listView.setRoot(order.getOrderList());
+            printTotal(order.getSubTotal(), subTotalText, taxText, totalText);
+        }
     }
 }
